@@ -1,0 +1,21 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Proxy Setup — Hosts, Ports, Protocols</title>
+<meta name=description content="Connect to Verdy Proxy: HTTP/HTTPS and SOCKS5 on port 8899, per-type hostnames, authentication, sticky sessions.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/proxy-setup">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Proxy Setup</div>
+<section class=prose><h1>Proxy setup</h1>
+<h3>Endpoints</h3><p>Every plan exposes <b>HTTP/HTTPS and SOCKS5 on port 8899</b>. Hostnames follow <code>&lt;type&gt;.&lt;country&gt;.proxy.verdy.vernerx.com</code>, e.g. <code>rr.usa.proxy.verdy.vernerx.com:8899</code> for rotating residential USA. Exact hosts are listed in your dashboard — copy them from there, not from memory.</p>
+<h3>Authentication</h3><p>Proxy-Authorization with your <code>proxy_user</code> / <code>proxy_pass</code>. Unknown or expired logins receive <b>HTTP 407</b>.</p>
+<h3>Sticky vs rotating</h3><p>Append <code>_sess-&lt;any-id&gt;</code> to the username to pin an exit IP (e.g. <code>user_sess-shop1</code>). A new id per request rotates. Sticky holds minutes to tens of minutes depending on pool health, not forever — design retries accordingly.</p>
+<h3>Test command</h3><pre>curl -x http://USER:PASS@HOST:8899 https://api.ipify.org
+curl -x socks5://USER:PASS@HOST:8899 https://api.ipify.org</pre>
+<h3>Limits</h3><p>Per-key request rate limits are enforced at the edge; sustained 429s mean slow down, not retry harder. See <a href=/docs/troubleshooting>Troubleshooting</a>.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

@@ -1,0 +1,22 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>API Guide — Verdy Docs</title>
+<meta name=description content="Use the Verdy developer API: endpoints, credentials, usage checks, password rotation, rate limits.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/api">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · API Guide</div>
+<section class=prose><h1>API guide</h1>
+<h3>Authentication</h3><p>Your <b>proxy login</b> is your API key — HTTP Basic (<code>user:pass</code>) or your dashboard session. These are use-only credentials: proxy traffic plus usage endpoints. System keys are never exposed.</p>
+<h3>Endpoints</h3><pre>GET  /api/dev/endpoints   all types + hosts for your country
+GET  /api/dev/creds       username + per-type endpoints
+GET  /api/dev/usage       plan, status, expiry, payment history
+POST /api/dev/rotate      rotate proxy password (~5 min to propagate)</pre>
+<h3>Example</h3><pre>curl -u USER:PASS https://HOST/api/dev/usage</pre>
+<h3>Limits</h3><p>The data plane enforces per-key request rate limits; the usage endpoints are lightweight reads. Rotate keys on suspicion of leak — the old password dies at the next node sync. Full reference with four-language snippets: <a href=/api-portal>API portal</a>.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

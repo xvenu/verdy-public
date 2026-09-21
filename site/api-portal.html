@@ -1,0 +1,25 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>API Portal — Verdy Proxy Developers</title>
+<meta name=description content="Verdy developer portal: authentication, API keys, rate limits, SDKs, examples, error codes, best practices.">
+<link rel=canonical href="https://verdy.vernerx.com/api-portal">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · API Portal</div>
+<section class=hero><h1>Your proxy login is your API key.</h1><p>No separate tokens to juggle. Authenticate with HTTP Basic (<code>proxy_user:proxy_pass</code>) or your dashboard session. Full endpoint reference: <a href=/api-docs>API Documentation</a>.</p></section>
+<section><h2>Authentication</h2><div class=card><pre>curl -u USER:PASS https://HOST/api/dev/usage</pre><p>Use-only credentials: proxy traffic plus usage endpoints. System keys are never exposed to customers.</p></div></section>
+<section><h2>API keys</h2><div class=card><p>View, reveal, copy, and regenerate your key in the portal's API Access page. Regeneration kills the old password at the next 5-minute node sync — by design, not incidentally.</p></div></section>
+<section><h2>Rate limits</h2><div class=card><p>The data plane enforces per-key request limits. Sustained 429 means slow down and spread load; usage endpoints themselves are lightweight reads.</p></div></section>
+<section><h2>Usage</h2><div class=card><p><code>GET /api/dev/usage</code> returns plan, active status, expiry, and payment history — everything billing dashboards need without scraping HTML.</p></div></section>
+<section><h2>SDKs</h2><div class=card><p>No official SDKs yet — the interface is plain HTTPS + proxy URLs, so <code>requests</code>, <code>axios</code>, <code>fetch</code>, and Go's <code>net/http</code> are the SDK. Copy-paste snippets for all four live in the portal and <a href=/docs/api>API Guide</a>.</p></div></section>
+<section><h2>Error codes</h2><table class=tbl><tr><th>Code</th><th>Meaning</th><th>Action</th></tr>
+<tr><td>401</td><td>Bad proxy login on a use-only endpoint</td><td>Re-copy credentials; rotate if leaked</td></tr>
+<tr><td>407</td><td>Unknown/expired proxy login on traffic</td><td>Check status; renew; wait ≤5 min for sync</td></tr>
+<tr><td>429</td><td>Per-key rate limit</td><td>Back off exponentially</td></tr></table></section>
+<section><h2>Best practices</h2><div class=card><ul><li>Environment variables for credentials, never code.</li><li>One session id per job; rotate to refresh identity.</li><li>Treat 429 as slow-down and 407 as renew — never retry-storm either.</li><li>Rotate keys on team changes; old passwords die automatically.</li></ul></div></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

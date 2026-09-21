@@ -1,0 +1,21 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Troubleshooting — Verdy Docs</title>
+<meta name=description content="Fix Verdy proxy issues: 407 auth errors, 429 rate limits, timeouts, slow exits, credential rotation.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/troubleshooting">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Troubleshooting</div>
+<section class=prose><h1>Troubleshooting</h1>
+<h3>HTTP 407 on every request</h3><p>Unknown login, wrong password, wrong country, or expired subscription. Check the dashboard status line first; renew if expired and allow up to 5 minutes for node sync. Test verbosely: <code>curl -v -x http://USER:PASS@HOST:8899 https://api.ipify.org</code> and paste the output into a support ticket.</p>
+<h3>HTTP 429</h3><p>Per-key edge rate limit. Back off exponentially; do not add threads. If you need more throughput, split across products or contact sales.</p>
+<h3>Timeouts / connection refused</h3><p>Check the <a href=/status>Status page</a> for stale node sync in your country. If the country is stale, switch country in the dashboard (expiry is kept) and report it.</p>
+<h3>Exit IP changes mid-session</h3><p>You are rotating. Pin with <code>_sess-&lt;id&gt;</code>. If a sticky session still flips within a minute, the pool is churning — shorten session reuse or pick Static.</p>
+<h3>Slow responses</h3><p>Compare direct timing vs proxied timing, try another country, and check status. Per-exit latency is not yet measured — report numbers and we investigate with real data.</p>
+<h3>Password stopped working after rotation</h3><p>Expected for up to 5 minutes (node sync). After that, re-copy from the dashboard — the old value is dead by design.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

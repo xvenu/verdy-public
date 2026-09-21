@@ -1,0 +1,42 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>FAQ — Verdy Proxy Help Center</title>
+<meta name=description content="Answers about Verdy Proxy: setup, billing, payments, proxy types, countries, security, API, refunds, renewals.">
+<link rel=canonical href="https://verdy.vernerx.com/faq">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · FAQ</div>
+<section class=hero><h1>Answers, not tickets.</h1><p><input id=q placeholder="Search answers…" style="width:100%;max-width:480px"></p></section>
+<section>
+<h2>Getting Started</h2>
+<details data-t="proxy what is"><summary>What is a proxy?</summary><p>A proxy is a server that forwards your traffic, so websites see the proxy's IP instead of yours. Verdy sells private HTTP/HTTPS + SOCKS5 proxies: your own login, your own exit IPs, in the country you choose.</p></details>
+<details data-t="start signup activate how long"><summary>How long does activation take?</summary><p>Verified payments (Paystack, Stripe, confirmed crypto) provision in seconds — credentials appear in your dashboard immediately. Manual-review payments activate on confirmation, typically within hours on business days.</p></details>
+<details data-t="countries available coverage"><summary>What countries are available?</summary><p>Kenya, Philippines, USA, Canada, UK, China (HK exit), Singapore, Japan, India, Germany, Netherlands. Live seats are shown in the portal; full countries pause new assignments.</p></details>
+<h2>Billing &amp; Payments</h2>
+<details data-t="billing how work order invoice"><summary>How does billing work?</summary><p>Checkout creates a numbered order first. Your payment satisfies the order; service activates only after the provider verifies it. Every charge produces a numbered invoice with PDF.</p></details>
+<details data-t="pay methods card mpesa usdt usdc"><summary>Which payment methods work?</summary><p>Paystack (cards, bank, mobile money), Stripe cards, Crypto USDT and USDC. M-Pesa is coming soon.</p></details>
+<details data-t="renew renewals extend expiry"><summary>How do renewals work?</summary><p>Each verified payment adds 30/90/365 days stacked from the later of now or your current expiry — renewing early never wastes paid time. Expiry cuts access automatically (HTTP 407) until renewal.</p></details>
+<details data-t="refund money back"><summary>Can I get a refund?</summary><p>Yes, through the recorded refund process in our <a href=/legal/refunds>Refund Policy</a> — provider refund attempted, subscription cancelled, everything logged.</p></details>
+<details data-t="coupon discount promo"><summary>Do coupons work?</summary><p>Yes — percentage codes apply at order time with validity windows and usage caps enforced automatically.</p></details>
+<h2>Proxies</h2>
+<details data-t="residential rotating sticky"><summary>How do Residential proxies work?</summary><p>Rotating residential gives a fresh home IP per request, or pin one with a sticky session: append <code>_sess-&lt;id&gt;</code> to your username. Sold by bandwidth quota (5/20/100 GB).</p></details>
+<details data-t="datacenter bulk speed"><summary>When should I choose Datacenter?</summary><p>Bulk throughput where speed beats trust — sold as 10 or 50 IPs. For logins and high-trust targets, use residential or mobile instead.</p></details>
+<details data-t="static dedicated same ip"><summary>What are Static proxies?</summary><p>Dedicated proxies that keep the same IP (1, 5, or 20). Ideal for accounts, carts, and anything that punishes IP changes.</p></details>
+<details data-t="mobile 4g carrier trust"><summary>What are Mobile proxies?</summary><p>Carrier-grade exits with the highest trust level, sold by bandwidth (5/20 GB). Best for social and app scraping.</p></details>
+<details data-t="bandwidth quota used remaining"><summary>How does bandwidth work?</summary><p>Residential and Mobile products carry a GB quota shown in your dashboard with remaining balance. Static and Datacenter are per-proxy, unmetered.</p></details>
+<details data-t="socks5 http https port"><summary>Which protocols and ports?</summary><p>HTTP/HTTPS and SOCKS5 on port 8899 in every country, authenticated with your username and password.</p></details>
+<h2>Security &amp; Privacy</h2>
+<details data-t="log traffic privacy"><summary>Do you log traffic?</summary><p>No. We log account events (payments, tickets, admin actions) for billing and safety — never the content or destinations of your proxied traffic. See the <a href=/legal/privacy>Privacy Policy</a>.</p></details>
+<details data-t="abuse spam cutoff"><summary>What happens on abuse reports?</summary><p>Valid reports are triaged within 24h per our <a href=/legal/abuse>Abuse Handling Policy</a>, up to suspension. Spam, fraud, and attacks are never permitted.</p></details>
+<h2>API &amp; Support</h2>
+<details data-t="api key developers rotate"><summary>How do I use the API?</summary><p>Your proxy login is your API key: list endpoints, fetch credentials, check usage, rotate passwords. Snippets for cURL, Python, JavaScript, and Go are in the <a href=/api-portal>API portal</a>.</p></details>
+<details data-t="407 expired cutoff fix"><summary>Why do I get HTTP 407?</summary><p>407 means unknown login, wrong password, or expired subscription. Check status in your dashboard; renewal restores access at the next 5-minute node sync.</p></details>
+<details data-t="support ticket help enterprise"><summary>Do you offer enterprise plans?</summary><p>Volume and custom-country needs go through <a href=/contact>partnerships</a>. Everyone else gets the same self-serve flow — support tickets with tracked status.</p></details>
+</section>
+</div>
+<script>(function(){var q=document.getElementById('q');q.addEventListener('input',function(){var t=q.value.toLowerCase();document.querySelectorAll('details').forEach(function(d){var h=d.textContent.toLowerCase()+' '+(d.getAttribute('data-t')||'');d.style.display=(!t||h.indexOf(t)>=0)?'':'none';});});})();</script>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

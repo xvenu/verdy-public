@@ -1,0 +1,44 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>API Documentation — Verdy Proxy Reference</title>
+<meta name=description content="Verdy API reference: proxy, billing, subscription, usage, account, invoice, and support endpoints with cURL, Python, JavaScript, Go examples.">
+<link rel=canonical href="https://verdy.vernerx.com/api-docs">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/api-portal>API Portal</a> · Reference</div>
+<section class=hero><h1>API reference.</h1><p>Every endpoint below exists in the beta. Base path is your dashboard host; <code>USER:PASS</code> is your proxy login unless noted.</p></section>
+<section class=prose><h2>Proxy APIs</h2>
+<h3>Send traffic</h3><pre># cURL
+curl -x http://USER:PASS@HOST:8899 https://api.ipify.org
+# Python
+import requests
+p = {"http": "http://USER:PASS@HOST:8899", "https": "http://USER:PASS@HOST:8899"}
+requests.get("https://api.ipify.org", proxies=p, timeout=20)
+# JavaScript
+const { HttpsProxyAgent } = require("https-proxy-agent");
+const agent = new HttpsProxyAgent("http://USER:PASS@HOST:8899");
+// Go
+proxyURL, _ := url.Parse("http://USER:PASS@HOST:8899")
+client := &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(proxyURL)}}</pre>
+<h3>List endpoints</h3><pre>curl -u USER:PASS https://HOST/api/dev/endpoints
+# → {"country": "usa", "endpoints": [{"type": ..., "http": ..., "socks5": ...}]}</pre>
+<h3>Credentials</h3><pre>curl -u USER:PASS https://HOST/api/dev/creds
+# → {"username": ..., "password": ..., "endpoints": [...]}</pre>
+<h3>Rotate password</h3><pre>curl -u USER:PASS -X POST https://HOST/api/dev/rotate
+# → {"username": ..., "password": "NEW", "note": "old password stops ... 5-min node sync"}</pre>
+<h2>Billing APIs</h2><h3>Create order</h3><pre>curl -b cookies.txt -X POST -d "slug=res-20gb&cycle=monthly&country=usa&ptype=rotating-residential" https://HOST/bx/order
+# → {"order_id": "ord_...", "amount_usd": 20.0, "status": "pending"}</pre>
+<h3>Pay</h3><pre>curl -b cookies.txt -X POST -d "order_id=ord_...&method=paystack_card" https://HOST/bx/pay
+# methods: paystack_card, paystack_momo, mpesa, usdt, usdc → checkout URL or awaiting instructions</pre>
+<h2>Subscription APIs</h2><p>Subscriptions surface through <code>GET /api/dev/usage</code> (plan, active, expires_at) and the portal's Usage page (quotas, renewal dates). No separate token model in beta.</p>
+<h2>Usage APIs</h2><pre>curl -u USER:PASS https://HOST/api/dev/usage
+# → {"plan": ..., "active": true, "expires_at": ..., "payments": [...]}</pre>
+<h2>Account APIs</h2><p>Country and type switches are form endpoints (<code>/switch-country</code>, <code>/switch-type</code>); password change is <code>/change-password</code>. All session-authenticated.</p>
+<h2>Invoice APIs</h2><p>Numbered invoices render in Transactions; <code>GET /app/invoice-pdf?number=INV-…</code> downloads the PDF (owner or admin).</p>
+<h2>Support APIs</h2><p>Tickets are created via the portal form (<code>POST /ticket</code>: subject, body) with status tracking in Support Center.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

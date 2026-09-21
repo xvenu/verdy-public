@@ -1,0 +1,39 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Python Setup — Verdy Docs</title>
+<meta name=description content="Use Verdy proxies with Python requests: proxy dicts, retries, rotation, sticky sessions.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/python-setup">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Python Setup</div>
+<section class=prose><h1>Python setup</h1>
+<h3>Basic requests</h3><pre>import requests
+proxies = {
+  "http": "http://USER:PASS@HOST:8899",
+  "https": "http://USER:PASS@HOST:8899",
+}
+r = requests.get("https://api.ipify.org", proxies=proxies, timeout=20)
+print(r.status_code, r.text)</pre>
+<h3>Rotation per request</h3><pre>import itertools, secrets
+def session_user(base):
+    return f"{base}_sess-{secrets.token_hex(4)}"
+# new session id per request = fresh exit IP</pre>
+<h3>Sticky session</h3><pre>proxies["http"] = "http://USER_sess-shop1:PASS@HOST:8899"
+# same id across requests = same exit IP (minutes-scale stability)</pre>
+<h3>Retries with backoff</h3><pre>import time
+for attempt in range(4):
+    try:
+        r = requests.get(url, proxies=proxies, timeout=20)
+        if r.status_code == 407:
+            raise SystemExit("login expired or wrong — check dashboard, then renew")
+        r.raise_for_status()
+        break
+    except requests.RequestException:
+        time.sleep(2 ** attempt)
+# Treat 429 as slow-down, never retry-storm: the edge rate-limits per key.</pre></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

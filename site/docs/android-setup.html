@@ -1,0 +1,18 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Android Proxy Setup — Verdy Docs</title>
+<meta name=description content="Set a Verdy HTTP proxy on Android Wi-Fi networks, per network, with auth.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/android-setup">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Android Setup</div>
+<section class=prose><h1>Android proxy setup</h1>
+<h3>Wi-Fi proxy (per network)</h3><p>Settings → Network &amp; internet → Wi-Fi → long-press your network → Modify → Advanced options → Proxy: <b>Manual</b>. Hostname = your Verdy host, port <code>8899</code>, bypass <code>localhost,127.0.0.1</code>. Save — the first connection prompts for proxy username and password (your Verdy login).</p>
+<h3>Limits to know</h3><p>Settings apply per Wi-Fi network only — mobile data ignores them, and some apps (notably Google Play services paths) bypass proxies. For whole-device routing including mobile data, use a proxy-tunneling app or run the workload in an antidetect profile instead.</p>
+<h3>Verify</h3><p>Open <code>https://api.ipify.org</code> in Chrome — the IP must match your purchased country.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>

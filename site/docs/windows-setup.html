@@ -1,0 +1,18 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
+<title>Windows Proxy Setup — Verdy Docs</title>
+<meta name=description content="Set a Verdy manual proxy on Windows 10/11 with authentication.">
+<link rel=canonical href="https://verdy.vernerx.com/docs/windows-setup">
+<link rel=icon href="/static/assets/logo/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel=icon type="image/png" sizes="32x32" href="/static/assets/logo/favicon-32.png">
+<link rel=apple-touch-icon href="/static/assets/logo/apple-touch-icon.png">
+<link rel=stylesheet href="/site/site.css"></head><body>
+<header class=top><div class="wrap nav"><a class=logo href=/>Verdy Proxy</a><span class=beta>BETA</span><nav><a href=/products>Products</a><a href=/pricing>Pricing</a><a href=/coverage>Coverage</a><a href=/solutions>Solutions</a><a href=/docs>Documentation</a><a href=/api-portal>API</a><a href=/affiliates>Affiliate</a><a href=/blog>Blog</a><a href=/about>Company</a><a href=/status>Status</a><a href=/login>Login</a><a class=btn href=/signup>Get Started</a></nav></div></header>
+<div class=wrap>
+<div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Windows Setup</div>
+<section class=prose><h1>Windows proxy setup</h1>
+<h3>Manual proxy (Windows 10/11)</h3><p>Settings → Network &amp; internet → Proxy → Manual proxy setup → <b>Use a proxy server: On</b>. Address = your Verdy host, port <code>8899</code>. Add <code>localhost;127.0.0.1</code> to the exception list and Save. Windows prompts for username and password on first use — enter your proxy login.</p>
+<h3>Scope</h3><p>This routes system traffic including Edge, Chrome (default profile), and most desktop apps. Firefox can override it with its own settings (<a href=/docs/firefox-setup>guide</a>). Command line tools need explicit flags — see <a href=/docs/python-setup>Python</a> and <a href=/docs/nodejs-setup>Node.js</a>.</p>
+<h3>Verify</h3><p>Open <code>https://api.ipify.org</code> — the IP must match your purchased country.</p></section>
+</div>
+<footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · Public beta · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
+</body></html>
