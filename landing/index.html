@@ -24,6 +24,18 @@ display:flex;align-items:center;justify-content:center;font-weight:900;color:#ff
 .logo b{font-size:1.2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
 .beta{font-size:.7rem;font-weight:800;background:var(--warn);color:#111;border-radius:99px;padding:.15em .7em}
 .top-actions{margin-left:auto;display:flex;gap:.6rem;flex-wrap:wrap}
+.topnav{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
+.topnav a{color:var(--mut);font-weight:700;font-size:.92rem;text-decoration:none}
+.topnav a:hover{color:#fff}
+#locsel{background:#1c2044;color:#a5f3fc;border:2px solid var(--b);border-radius:99px;padding:.45em .9em;font-weight:700;max-width:190px}
+.oauthrow{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:.8rem 0}
+.hero-card{padding:1.6rem 1.2rem;text-align:center}
+#panelOverlay{position:fixed;inset:0;z-index:60}
+#panelOverlay[hidden]{display:none}
+.panel-backdrop{position:absolute;inset:0;background:rgba(5,7,18,.72);backdrop-filter:blur(4px)}
+.panel-box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(880px,94vw);max-height:86vh;overflow:auto;background:#14173a;border:1px solid var(--b);border-radius:18px;padding:1.2rem 1.3rem;box-shadow:0 24px 80px rgba(0,0,0,.6),0 0 40px rgba(6,182,212,.15)}
+.panel-close{position:sticky;top:0;float:right;background:#1c2044;color:#fff;border:2px solid var(--line);border-radius:50%;width:2.2em;height:2.2em;font-weight:800;cursor:pointer}
+.panel-close:hover{border-color:var(--b)}
 .btn{display:inline-block;background:linear-gradient(90deg,var(--a),var(--b));color:#fff;font-weight:700;
 border-radius:99px;padding:.7em 1.5em;text-decoration:none;margin:.3em .2em}
 .btn.ghost{background:transparent;border:2px solid var(--b)}
@@ -64,34 +76,39 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 </head>
 <body>
 <header class="top"><div class="wrap topbar">
-<a class="logo" href="#top" aria-label="Verdy Proxy home"><img src="/static/assets/logo/logo.png" alt="Verdy" width="72" height="72"><b>Verdy Proxy</b></a><span class="beta">PUBLIC BETA</span>
+<a class="logo" href="#top" aria-label="Verdy Proxy home"><img src="/static/assets/logo/logo.png" alt="Verdy Proxy" width="72" height="72"></a><span class="beta">PUBLIC BETA</span>
+<nav class="topnav"><a href="#products">Products</a><a href="#pricing">Pricing</a><a href="#locations">Locations</a><a href="#usecases">Use cases</a><a href="#resources">Resources</a></nav>
+<select id="locsel" aria-label="Jump to a location"><option value="">Locations…</option><option value="loc-kenya">Kenya</option><option value="loc-philippines">Philippines</option><option value="loc-usa">USA</option><option value="loc-canada">Canada</option><option value="loc-uk">UK</option><option value="loc-china">China (HK exit)</option><option value="loc-singapore">Singapore</option><option value="loc-japan">Japan</option><option value="loc-india">India</option><option value="loc-germany">Germany</option><option value="loc-netherlands">Netherlands</option></select>
 <div class="top-actions"><a class="btn ghost" href="/login">Login</a><a class="btn" href="/signup">Create account</a></div>
 </div></header>
 
 <div class="wrap">
 <section class="hero" id="top">
+<div class="card hero-card">
 <h1>Private proxies, live in minutes.</h1>
 <p>Pick a country, pay monthly, get dedicated HTTP/HTTPS + SOCKS5 credentials that switch on automatically — and switch off automatically if a subscription lapses.</p>
-<p><a class="btn" href="/signup">Signup</a> <a class="btn ghost" href="/pricing">Buy now</a></p>
+<div class="oauthrow"><a class="btn ghost" href="/oauth/github">Continue with GitHub</a><a class="btn ghost" href="/oauth/google">Continue with Google</a></div>
+<p><a class="btn" href="/signup">Create account</a> <a class="btn ghost" href="/login">Login</a> <a class="btn ghost" href="/pricing">Buy now</a></p>
+</div>
 <div class="note"><strong>Public beta:</strong> the service works end-to-end and is monitored. Paystack and Crypto work today.</div>
 </section>
 
-<section id="products"><h2>Products</h2>
-<details class="collap" data-timer><summary>All proxies <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid cols3">
+<div hidden id="wrap-products"><h2>Products</h2>
+<details class="collap" open><summary>All proxies <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid cols3">
 <div class="card"><h3>Static Residential</h3><p>Same real-home IP for months. Logins, carts, accounts.</p><p class="price">from $5/mo</p></div>
 <div class="card"><h3>Rotating Residential</h3><p>Fresh home IP per request or sticky 1–30 min. Scraping, SERP.</p><p class="price">from $10/mo</p></div>
 <div class="card"><h3>Datacenter</h3><p>Fast cheap IPs for bulk throughput. Speed over trust.</p><p class="price">from $10/mo</p></div>
 <div class="card"><h3>Mobile 4G/5G</h3><p>Carrier IPs, highest trust. Social, app scraping.</p><p class="price">from $20/mo</p></div>
 <div class="card"><h3>ISP Static</h3><p>Datacenter speed with residential ASN. Best of both.</p><p class="price">from $12/mo</p></div>
 </div><p><a class="btn" href="/signup">Get a proxy</a></p></div></details>
-<details class="collap" data-timer><summary>Tools <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid">
+<details class="collap" open><summary>Tools <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid">
 <div class="card"><h3>Chrome proxy setup</h3><p>Point Chrome at your Verdy endpoint in 2 minutes — manual proxy configuration plus a shown authentication step. No download needed.</p><p><a class="btn ghost" href="/docs/browser-setup">Chrome setup guide</a></p></div>
 <div class="card"><h3>Firefox proxy addon setup</h3><p>Use Firefox with your Verdy login, including per-profile isolation and remembered credentials.</p><p><a class="btn ghost" href="/docs/browser-setup">Firefox setup guide</a></p></div>
 </div></div></details>
-</section>
+</div>
 
-<section id="pricing"><h2>Pricing</h2>
-<details class="collap" data-timer><summary>All products &amp; prices (USD) <span class="hint">auto-closes after 1 min</span></summary><div class="body">
+<div hidden id="wrap-pricing"><h2>Pricing</h2>
+<details class="collap" open><summary>All products &amp; prices (USD) <span class="hint">auto-closes after 1 min</span></summary><div class="body">
 <table class="tbl"><tr><th>Product</th><th>Monthly</th><th>Quarterly −10%</th><th>Yearly −20%</th></tr>
 <tr><td>Residential 5GB</td><td>$10</td><td>$27</td><td>$96</td></tr>
 <tr><td>Residential 20GB</td><td>$20</td><td>$54</td><td>$192</td></tr>
@@ -104,10 +121,10 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 <tr><td>Mobile 5GB</td><td>$20</td><td>$54</td><td>$192</td></tr>
 <tr><td>Mobile 20GB</td><td>$50</td><td>$135</td><td>$480</td></tr></table>
 <p><a class="btn" href="/pricing">Buy now</a></p></div></details>
-</section>
+</div>
 
-<section id="use-cases"><h2>Use cases</h2>
-<details class="collap" data-timer><summary>All use cases <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid cols3">
+<div hidden id="wrap-usecases"><h2>Use cases</h2>
+<details class="collap" open><summary>All use cases <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="grid cols3">
 <div class="card"><h3>Web Scraping</h3><p>Rotating exits with sticky sessions per job.</p></div>
 <div class="card"><h3>SEO Monitoring</h3><p>Country-specific SERP checks from real local exits.</p></div>
 <div class="card"><h3>Market Research</h3><p>See localized pages and prices as locals do.</p></div>
@@ -119,9 +136,9 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 <div class="card"><h3>Lead Generation</h3><p>Compliant public-data collection.</p></div>
 <div class="card"><h3>Automation</h3><p>Stable endpoints for bots and scheduled jobs.</p></div>
 </div><p><a class="btn ghost" href="/solutions">All solutions</a></p></div></details>
-</section>
+</div>
 
-<section id="locations"><h2>Locations</h2>
+<div hidden id="wrap-locations"><h2>Locations</h2>
 <div class="flags">
 <div class="flag"><span class="f">🇰🇪</span>Kenya</div>
 <div class="flag"><span class="f">🇵🇭</span>Philippines</div>
@@ -136,14 +153,14 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 <div class="flag"><span class="f">🇳🇱</span>Netherlands</div>
 </div>
 <p style="color:var(--mut)">HTTP/HTTPS + SOCKS5 on port <code>8899</code> in every location.</p>
-</section>
+</div>
 
 <section id="how"><h2>How it works</h2>
 <ol class="steps"><li>Sign up + pick a proxy type and country</li><li>Pay monthly with Paystack or Crypto USDT</li><li>Credentials activate automatically — test with <code>curl -x http://USER:PASS@HOST:8899 https://api.ipify.org</code></li><li>Renew or switch country anytime; expiry is kept</li></ol>
 </section>
 
-<section id="resources"><h2>Resources</h2>
-<details class="collap" data-timer><summary>Docs, guides &amp; policies <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="resgrid">
+<div hidden id="wrap-resources"><h2>Resources</h2>
+<details class="collap" open><summary>Docs, guides &amp; policies <span class="hint">auto-closes after 1 min</span></summary><div class="body"><div class="resgrid">
 <a href="/docs">Docs<small>Setup, billing &amp; troubleshooting guides</small></a>
 <a href="/blog">Blog<small>Engineering notes &amp; product updates</small></a>
 <a href="/legal/terms">Terms<small>Terms of Service</small></a>
@@ -155,14 +172,21 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 <a href="/support">Support<small>Tickets with tracking</small></a>
 <a href="/contact">Contact<small>Sales, abuse, press</small></a>
 </div></div></details>
-</section>
+</div>
+<div id="panelOverlay" hidden><div class="panel-backdrop"></div><div class="panel-box" role="dialog" aria-modal="true"><button class="panel-close" aria-label="Close">✕</button><div id="panelBody"></div></div></div>
 </div>
 
 <footer><div class="wrap">
 <p><a href="/docs">Docs</a> · <a href="/blog">Blog</a> · <a href="/legal/terms">Terms</a> · <a href="/legal/privacy">Privacy Policy</a> · <a href="/legal/cookies">Cookies</a> · <a href="/status">Status</a></p>
 <p>© 2026 Verdy Proxy · Public beta</p>
 </div></footer>
-<script>(function(){document.querySelectorAll('details[data-timer]').forEach(function(d){var t=null;
-d.addEventListener('toggle',function(){if(d.open){clearTimeout(t);t=setTimeout(function(){d.open=false;},60000);}else{clearTimeout(t);}});});})();</script>
+<script>(function(){var ov=document.getElementById('panelOverlay'),bd=document.getElementById('panelBody'),cur=null;
+function close(){if(cur){var w=document.getElementById('wrap-'+cur);while(bd.firstChild){if(w)w.appendChild(bd.firstChild);else bd.removeChild(bd.firstChild);}}cur=null;ov.hidden=true;document.body.style.overflow='';}
+function open(sec){if(cur===sec)return;if(cur)close();var w=document.getElementById('wrap-'+sec);if(!w)return;cur=sec;while(w.firstChild)bd.appendChild(w.firstChild);ov.hidden=false;document.body.style.overflow='hidden';bd.scrollTop=0;}
+document.querySelectorAll('.topnav a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();open(a.getAttribute('href').slice(1));});});
+ov.querySelector('.panel-backdrop').addEventListener('click',close);ov.querySelector('.panel-close').addEventListener('click',close);
+addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
+document.querySelectorAll('#wrap-locations .flag').forEach(function(el){var t=el.textContent.trim().split(/\s+/)[0].toLowerCase();el.id='loc-'+t;});
+var ls=document.getElementById('locsel');if(ls)ls.addEventListener('change',function(){if(!ls.value)return;open('locations');var el=document.getElementById(ls.value);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='2px solid #06b6d4';setTimeout(function(){el.style.outline='';},1600);}});})();</script>
 </body>
 </html>
