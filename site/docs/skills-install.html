@@ -10,12 +10,12 @@
 <div class=wrap>
 <div class=breadcrumb><a href=/>Home</a> · <a href=/docs>Docs</a> · Skills Install</div>
 <section class=prose><h1>Verdy Skills for AI agents</h1>
-<p>Five skill packs that teach your coding agent to work Verdy proxies: SEO monitoring ($12/mo), ad verification ($12/mo), streaming QA ($15/mo), social monitoring ($15/mo), web scraping ($12/mo). Flat rates, quarterly −10%, yearly −20%, coupons apply. Skills need an active proxy subscription — they drive your proxies and add no bandwidth charges. Buy under Billing → Products.</p>
-<h3>Install (one command per pack)</h3><pre>cp -r skills/verdy-seo-monitoring ~/.claude/skills/   # Claude Code
-cp -r skills/verdy-seo-monitoring &lt;agent-skills-dir&gt;/  # others, per their docs</pre>
-<h3>Verify</h3><p>Ask the agent: "what verdy skills are installed?" — it should summarize the pack from its <code>SKILL.md</code>.</p>
-<h3>Credentials</h3><p>Skills never bundle secrets. Export <code>VERDY_USER</code>, <code>VERDY_PASS</code>, <code>VERDY_HOST</code> (port <code>8899</code>) from your dashboard before use.</p>
-<h3>Example prompts</h3><p>Each pack ships copy-paste prompts, e.g. "Check my top 20 keywords through the UK exit and report rank changes" or "Give each of my 5 accounts its own static IP and document the mapping." Full list inside each <code>SKILL.md</code>.</p></section>
+<p>Five executable skill packs — each runs real tools and verifies results, not advice docs: SEO monitoring ($12/mo), ad verification ($12/mo), streaming QA ($15/mo), social monitoring ($15/mo), web scraping ($12/mo). Quarterly −10%, yearly −20%, coupons apply. Proxy-driving packs need an active proxy subscription; API-driving scripts meter normal usage. Buy under Billing → Products.</p>
+<h3>Install (owners only)</h3><p>Dashboard → AI Skills → <b>Download</b> your pack (versioned tarball). Extract into your agent's skills directory:</p><pre>tar -xzf verdy-verdy-web-scraping-v2.0.0.tar.gz -C ~/.claude/skills/   # Claude Code
+# others (OpenCode, Cursor, Windsurf): extract to the agent skills dir</pre>
+<h3>Verify (mandatory)</h3><p>Every pack ships a verify command — run it before building. Example: <code>python3 scripts/doctor.py</code> must print ALL PASS. A red gate means stop and fix; never build on it.</p>
+<h3>Credentials</h3><p>Skills never bundle secrets. Export <code>VERDY_API_KEY</code> (dashboard → Scraper API → Keys), plus <code>VERDY_USER</code>, <code>VERDY_PASS</code>, <code>VERDY_HOST</code> (port <code>8899</code>) for proxy-driving packs.</p>
+<h3>Example prompts</h3><p>Each pack ships copy-paste prompts, e.g. "Track my top 20 keywords and alert on any top-3 loss" or "Verify my 5 accounts each exit a distinct IP." Full list inside each <code>SKILL.md</code>.</p></section>
 </div>
 <footer class=site><div class="wrap fgrid"><div><h4>Products</h4><a href=/products/residential>Residential</a><a href=/products/static>Static</a><a href=/products/datacenter>Datacenter</a><a href=/products/mobile>Mobile</a></div><div><h4>Resources</h4><a href=/docs>Documentation</a><a href=/faq>FAQ</a><a href=/blog>Blog</a><a href=/coverage>Coverage</a></div><div><h4>Company</h4><a href=/about>About</a><a href=/contact>Contact</a><a href=/affiliates>Affiliates</a><a href=/partners>Partners</a></div><div><h4>Legal</h4><a href=/legal/terms>Terms</a><a href=/legal/privacy>Privacy</a><a href=/legal/refunds>Refunds</a><a href=/legal/acceptable-use>Acceptable Use</a></div></div><div class=wrap><p>© 2026 Verdy Proxy · <a href=/status>System Status</a> · <a href=/trust>Trust Center</a></p></div></footer>
 </body></html>
