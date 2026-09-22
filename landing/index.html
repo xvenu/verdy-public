@@ -18,17 +18,18 @@ color:var(--txt);line-height:1.6}
 header.top{position:sticky;top:0;z-index:5;background:rgba(13,16,33,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .topbar{display:flex;align-items:center;gap:.8rem;padding:.7rem 0;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:.55rem;text-decoration:none}
-.logo img{width:36px;height:36px;border-radius:9px;display:block}
+.logo img{height:34px;width:auto;border-radius:8px;display:block}
 .logo .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--a),var(--b));
 display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:1.2rem}
 .logo b{font-size:1.2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.beta{font-size:.7rem;font-weight:800;background:var(--warn);color:#111;border-radius:99px;padding:.15em .7em}
 .top-actions{margin-left:auto;display:flex;gap:.6rem;flex-wrap:wrap}
 .topnav{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
 .topnav a{color:var(--mut);font-weight:700;font-size:.92rem;text-decoration:none}
 .topnav a:hover{color:#fff}
 #locsel{background:#1c2044;color:#a5f3fc;border:2px solid var(--b);border-radius:99px;padding:.45em .9em;font-weight:700;max-width:190px}
 .oauthrow{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:.8rem 0}
+.oauthrow .btn{display:inline-flex;align-items:center;gap:.55rem}
+.oauthrow svg{width:18px;height:18px;flex:none}
 .hero-card{padding:1.6rem 1.2rem;text-align:center}
 #panelOverlay{position:fixed;inset:0;z-index:60}
 #panelOverlay[hidden]{display:none}
@@ -70,13 +71,12 @@ table.tbl{width:100%;border-collapse:collapse;font-size:.9rem}
 .tbl th{color:var(--mut);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
 footer{border-top:1px solid var(--line);padding:1.6rem 0 2.4rem;color:var(--mut);font-size:.9rem}
 footer a{color:var(--mut)}
-.note{background:rgba(250,204,21,.1);border:1px solid var(--warn);border-radius:12px;padding:.8rem 1rem;font-size:.92rem}
 ol.steps li{margin:.5em 0;color:var(--mut)}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap topbar">
-<a class="logo" href="#top" aria-label="Verdy Proxy home"><img src="/static/assets/logo/logo.png" alt="Verdy Proxy" width="72" height="72"></a><span class="beta">PUBLIC BETA</span>
+<a class="logo" href="#top" aria-label="Verdy Proxy home"><img src="/static/assets/logo/logo.jpg" alt="Verdy Proxy"><b>Verdy Proxy</b></a>
 <nav class="topnav"><a href="#products">Products</a><a href="#pricing">Pricing</a><a href="#locations">Locations</a><a href="#usecases">Use cases</a><a href="#resources">Resources</a></nav>
 <select id="locsel" aria-label="Jump to a location"><option value="">Locations…</option><option value="loc-kenya">Kenya</option><option value="loc-philippines">Philippines</option><option value="loc-usa">USA</option><option value="loc-canada">Canada</option><option value="loc-uk">UK</option><option value="loc-china">China (HK exit)</option><option value="loc-singapore">Singapore</option><option value="loc-japan">Japan</option><option value="loc-india">India</option><option value="loc-germany">Germany</option><option value="loc-netherlands">Netherlands</option></select>
 <div class="top-actions"><a class="btn ghost" href="/login">Login</a><a class="btn" href="/signup">Create account</a></div>
@@ -86,11 +86,10 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 <section class="hero" id="top">
 <div class="card hero-card">
 <h1>Private proxies, live in minutes.</h1>
-<p>Pick a country, pay monthly, get dedicated HTTP/HTTPS + SOCKS5 credentials that switch on automatically — and switch off automatically if a subscription lapses.</p>
-<div class="oauthrow"><a class="btn ghost" href="/oauth/github">Continue with GitHub</a><a class="btn ghost" href="/oauth/google">Continue with Google</a></div>
+<p><strong>Verdy Proxy</strong> is a paid proxy service. Pick a country, pay monthly, get dedicated HTTP/HTTPS + SOCKS5 credentials that switch on automatically — and switch off automatically if a subscription lapses.</p>
+<div class="oauthrow"><a class="btn ghost" href="/oauth/github"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Continue with GitHub</a><a class="btn ghost" href="/oauth/google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/></svg>Continue with Google</a></div>
 <p><a class="btn" href="/signup">Create account</a> <a class="btn ghost" href="/login">Login</a> <a class="btn ghost" href="/pricing">Buy now</a></p>
 </div>
-<div class="note"><strong>Public beta:</strong> the service works end-to-end and is monitored. Paystack and Crypto work today.</div>
 </section>
 
 <div hidden id="wrap-products"><h2>Products</h2>
@@ -178,7 +177,7 @@ ol.steps li{margin:.5em 0;color:var(--mut)}
 
 <footer><div class="wrap">
 <p><a href="/docs">Docs</a> · <a href="/blog">Blog</a> · <a href="/legal/terms">Terms</a> · <a href="/legal/privacy">Privacy Policy</a> · <a href="/legal/cookies">Cookies</a> · <a href="/status">Status</a></p>
-<p>© 2026 Verdy Proxy · Public beta</p>
+<p>© 2026 Verdy Proxy</p>
 </div></footer>
 <script>(function(){var ov=document.getElementById('panelOverlay'),bd=document.getElementById('panelBody'),cur=null;
 function close(){if(cur){var w=document.getElementById('wrap-'+cur);while(bd.firstChild){if(w)w.appendChild(bd.firstChild);else bd.removeChild(bd.firstChild);}}cur=null;ov.hidden=true;document.body.style.overflow='';}

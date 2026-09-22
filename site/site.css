@@ -13,8 +13,8 @@ pre{background:#0a0d20;color:#a5f3fc;padding:1em;border-radius:12px;overflow-x:a
 .wrap{max-width:1024px;margin:0 auto;padding:0 1.1rem}
 header.top{position:sticky;top:0;z-index:5;background:rgba(11,14,31,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;gap:.9rem;padding:.7rem 0;flex-wrap:wrap}
-.logo{font-weight:800;font-size:1.2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
-.beta{font-size:.7rem;font-weight:800;background:var(--gold);color:#111;border-radius:99px;padding:.15em .7em}
+.logo{display:inline-flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
+.logo img{height:30px;width:auto;border-radius:7px;display:block}
 .nav nav{margin-left:auto;display:flex;gap:.85rem;flex-wrap:wrap;font-size:.88rem;align-items:center}
 .nav nav a{color:var(--mut);text-decoration:none}.nav nav a:hover{color:#fff}
 .btn{display:inline-block;background:linear-gradient(90deg,var(--a),var(--b));color:#fff;font-weight:700;border-radius:99px;padding:.6em 1.4em;text-decoration:none;margin:.25em .2em}
