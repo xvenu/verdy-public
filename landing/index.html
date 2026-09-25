@@ -187,5 +187,6 @@ ov.querySelector('.panel-backdrop').addEventListener('click',close);ov.querySele
 addEventListener('keydown',function(e){if(e.key==='Escape'&&!ov.hidden)close();});
 document.querySelectorAll('#wrap-locations .flag').forEach(function(el){var t=el.textContent.trim().split(/\s+/)[0].toLowerCase();el.id='loc-'+t;});
 var ls=document.getElementById('locsel');if(ls)ls.addEventListener('change',function(){if(!ls.value)return;open('locations');var el=document.getElementById(ls.value);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='2px solid #06b6d4';setTimeout(function(){el.style.outline='';},1600);}});})();</script>
+<script>(function(){var m=/[?&]ref=([A-Za-z0-9_-]{1,32})/.exec(location.search);if(!m)return;var c='aff_ref='+m[1].toUpperCase()+'; Path=/; Max-Age=2592000; SameSite=Lax'+(location.protocol==='https:'?'; Secure':'');document.cookie=c;})();</script>
 </body>
 </html>
